@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Login') {
             steps {
+                sh 'docker logout'
                 sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
             }
             }
