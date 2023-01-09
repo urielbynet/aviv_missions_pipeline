@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps {
               script{
-                docker.build("nginx_test/internal-storage")
+                docker.build("nginx_test")
               }  
             }
         }
@@ -19,8 +19,8 @@ pipeline {
         stage('Push') {
           steps {
                 withDockerRegistry([ credentialsId: "nexus-credentials-id", url: "http://localhost:8082" ]) {
-                sh 'docker tag nginx_test/internal-storage localhost:8082'
-                sh 'docker push localhost:8082'   
+                sh 'docker tag nginx_test localhost:8082/nginx_test'
+                sh 'docker push localhost:8082/nginx_test'   
             }
           }
     }
