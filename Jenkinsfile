@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment { 
+    environment {
     NEXUS_CREDS = credentials('nexus-credentials-id')
     } 
     stages {
