@@ -7,20 +7,19 @@ pipeline {
         stage('Build') {
             steps {
               script{
-                docker.build("nginx_test")
+                docker.build("nginx_test/internal-storage")
               }  
             }
         }
         stage('Login') {
             steps {
-                sh 'docker logout'
                 sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
             }
             }
         stage('Push') {
           steps {
                 withDockerRegistry([ credentialsId: "nexus-credentials-id", url: "http://localhost:8082" ]) {
-                sh "docker push nginx_test"   
+                sh "docker push nginx_test/internal-storage"   
             }
           }
     }
