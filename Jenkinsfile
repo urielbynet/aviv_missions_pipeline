@@ -20,7 +20,7 @@ pipeline {
           steps {
                 withDockerRegistry([ credentialsId: "nexus-credentials-id", url: "http://localhost:8082" ]) {
                 sh 'docker tag nginx_test/internal-storage localhost:8082'
-                sh 'docker push nginx_test/internal-storage'   
+                sh 'docker push localhost:8082'   
             }
           }
     }
