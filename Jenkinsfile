@@ -1,12 +1,21 @@
 pipeline {
-    agent any 
+    agent any
+    enviroment { 
+      NEXUS_CREDS = credentials ('nexus-credentials-id')
+    } 
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
               script{
-                docker.build("my-image-name")
+                docker.build("nginx_test")
               }  
             }
         }
+        stage('Login') {
+            steps {
+                sh('docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082')
+            }
     }
+  }
+
 }
