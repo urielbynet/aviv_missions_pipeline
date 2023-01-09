@@ -12,12 +12,17 @@ pipeline {
               }  
             }
         }
-        stage('Login') {
+        stage('SSH Conection') {
             steps {
                 sh '''
                      sshpass -p $SSH_TO_HOST_PSW ssh -tt urielwo@192.168.103.161
                      docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082
                    '''
+            }
+            }
+        stage('Login') {
+            steps {
+                sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
             }
     }
   }
