@@ -1,7 +1,3 @@
-FROM nginx:alpine
+FROM node:16.13.1-alpine
 
-RUN apk update && apk add bash
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+RUN apk add -U subversion

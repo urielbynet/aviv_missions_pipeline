@@ -1,18 +1,10 @@
 pipeline {
-    agent any
+    agent { dockerfile true }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-              sh '''
-                echo 'build started'
-                docker build --tag nginx_app .
-                docker images
-              '''
-            }
-        }
-      stage('push') {
-            steps {
-                sh 'docker push nginx_app'
+                sh 'node --version'
+                sh 'svn --version'
             }
         }
     }
