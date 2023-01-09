@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                docker.build("my-image-name")
             }
         }
     }
