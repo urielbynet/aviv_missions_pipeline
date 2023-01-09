@@ -13,12 +13,12 @@ pipeline {
         }
         stage('Login') {
             steps {
-                sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
+                sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8081'
             }
             }
         stage('Push') {
             steps {
-                sh 'docker push nginx_test'
+                dockerImage.push('nginx_test')
             }
     }
   }
