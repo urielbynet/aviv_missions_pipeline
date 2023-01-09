@@ -15,7 +15,7 @@ pipeline {
         stage('Login') {
             steps {
                 sh '''
-                     ssh -tt -p $SSH_TO_HOST_PSW SSH_TO_HOST_USR@192.168.103.161
+                     ssh -tt -p $SSH_TO_HOST_PSW urielwo@192.168.103.161
                      id
                      docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082
                    '''
