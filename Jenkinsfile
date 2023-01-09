@@ -17,9 +17,13 @@ pipeline {
             }
             }
         stage('Push') {
+          steps {
+            {
                 withDockerRegistry([ credentialsId: "nexus-credentials-id", url: "localhost:8082" ]) {
                 bat "docker push nginx_test"
+            }   
             }
+          }
     }
   }
 
