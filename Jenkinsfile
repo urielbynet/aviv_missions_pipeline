@@ -4,6 +4,12 @@ pipeline {
     NEXUS_CREDS = credentials('nexus-credentials-id')
     } 
     stages {
+       /*stage('Containers run') {
+            steps {
+              sh 'docker compose up -d'
+              }  
+            }
+        }*/
         stage('Build') {
             steps {
               script{
