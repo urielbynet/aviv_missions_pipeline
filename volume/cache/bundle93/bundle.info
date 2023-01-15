@@ -1,0 +1,6 @@
+93
+wrap:file:system/io/swagger/swagger-core/1.6.2/swagger-core-1.6.2.jar$overwrite=merge&Import-Package=com.google.common.*,javax.validation.*,*
+2
+80
+1673783449094
+0
