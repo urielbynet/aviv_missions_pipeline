@@ -11,9 +11,6 @@ pipeline {
             }
         }*/
         stage('sonarqube scan') {
-            tools {
-              sonarQube 'SonarQube'
-            }
             steps {
               withSonarQubeEnv('SonarQube') {
                     sh 'sonar-scanner'
