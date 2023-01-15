@@ -12,7 +12,9 @@ pipeline {
         }*/
         stage('sonarqube scan') {
             steps {
-              sh 'sonar-scanner'
+              withSonarQubeEnv('SonarQube') {
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
         stage('Build') {
