@@ -17,7 +17,7 @@ pipeline {
               }  
             }
         }
-        stage('Login') {
+        /*stage('Login') {
             steps {
                 sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
             }
@@ -29,7 +29,7 @@ pipeline {
                 sh 'docker push localhost:8082/nginx_test'   
             //}
           }
-    }
+    }*/
   }
 
 }
