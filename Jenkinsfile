@@ -12,9 +12,7 @@ pipeline {
         }*/
         stage('Build') {
             steps {
-              script{
-                docker.build("nginx_test")
-              }  
+              sh 'docker build -t nginx .'
             }
         }
         /*stage('Login') {
