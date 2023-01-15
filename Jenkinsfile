@@ -10,6 +10,11 @@ pipeline {
               }  
             }
         }*/
+        stage('sonarqube scan') {
+            steps {
+              sh 'docker build -t nginx .'
+            }
+        }
         stage('Build') {
             steps {
               sh 'docker build -t nginx .'
