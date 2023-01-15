@@ -12,7 +12,7 @@ pipeline {
         }*/
         stage('sonarqube scan') {
             steps {
-              sh 'docker build -t nginx .'
+              sh 'sonar-scanner'
             }
         }
         stage('Build') {
