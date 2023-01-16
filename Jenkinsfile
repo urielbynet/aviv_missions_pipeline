@@ -10,31 +10,28 @@ pipeline {
               }  
             }
         }*/
-        stage('sonarqube scan') {
-            steps {
-              withSonarQubeEnv(installationName: 'sq1') {
-                
+        stage('SonarQube Analysis') {
+                def scannerHome = tool 'sq1';
+                withSonarQubeEnv() {
+                sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
-        }
         stage('Build') {
             steps {
               sh 'docker build -t nginx .'
             }
         }
-        /*stage('Login') {
+        stage('Login') {
             steps {
                 sh 'docker login -u $NEXUS_CREDS_USR -p $NEXUS_CREDS_PSW localhost:8082'
             }
             }
         stage('Push') {
           steps {
-                //withDockerRegistry([ credentialsId: "nexus-credentials-id", url: "http://localhost:8082" ]) {
                 sh 'docker tag nginx_test localhost:8082/nginx_test'
                 sh 'docker push localhost:8082/nginx_test'   
-            //}
           }
-    }*/
+    }
   }
 
 }
