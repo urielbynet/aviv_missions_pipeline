@@ -10,14 +10,16 @@ pipeline {
               }  
             }
         }*/
-        stage('SonarQube Analysis') {     
-                def scannerHome = tool 'sq1';
-                steps{
-                withSonarQubeEnv() {
-                  sh "${scannerHome}/bin/sonar-scanner"
-                }
-            }
-            }
+        stage('SonarQube Analysis') {
+		        steps{
+              script {
+        	              def scannerHome = tool 'sonarqube';
+   		                  withSonarQubeEnv() {
+    		                    sh "${scannerHome}/bin/sonar-scanner"
+   			   }
+		    }
+		}
+	    }
         stage('Build') {
             steps {
               sh 'docker build -t nginx .'
